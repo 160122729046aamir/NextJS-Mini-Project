@@ -8,8 +8,8 @@ export async function sendEmail({email,emailType,userId}:any){
     await User.findOneAndUpdate({email},{
         verifyToken:hashedToken,verifyTokenExpiry: Date.now() + 60*60*1000
     })}
-    if (emailType === 'RESET'){
-        const user = await User.findOneAndUpdate({
+    if (emailType === "RESET"){
+    await User.findOneAndUpdate({
             forgotPasswordToken:hashedToken, forgotPasswordTokenExpiry: Date.now() + 60*60*1000
         })
     }
